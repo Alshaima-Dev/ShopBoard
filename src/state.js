@@ -1,4 +1,5 @@
 import { products } from './data.js'
+import { getLanguage } from './i18n.js'
 
 // Preserve the existing key so saved shopping bags survive this refactor.
 const STORAGE_KEY = 'shopboard-catalog-cart-v2'
@@ -42,6 +43,7 @@ export function createCartStore(catalog = products, storage) {
     getCart: () => ({ ...cart }),
     addItem: id => changeQuantity(id, 1),
     changeQuantity,
+    clearCart() { cart = {}; save() },
     removeItem(id) {
       delete cart[String(id)]
       save()
@@ -50,3 +52,21 @@ export function createCartStore(catalog = products, storage) {
 }
 
 export const cartStore = createCartStore()
+
+// Preferences use a separate key and never touch the saved shopping cart.
+export function createLanguageStore(storage) {
+  if (storage === undefined) {
+    try { storage = globalThis.localStorage } catch { storage = null }
+  }
+  let language = 'en'
+  try { language = getLanguage(storage?.getItem('shopboard-language')) } catch {}
+  return {
+    getLanguage: () => language,
+    setLanguage(value) {
+      language = getLanguage(value)
+      try { storage?.setItem('shopboard-language', language) } catch {}
+      return language
+    },
+  }
+}
+export const languageStore = createLanguageStore()

@@ -1,7 +1,13 @@
+import { getProductText, getLanguage, languages } from './i18n.js'
+
 // Pure functions: inputs in, results out. No DOM, storage, or input mutation.
-export function searchProducts(products, query = '') {
-  const text = query.trim().toLowerCase()
-  return products.filter(product => product.name.toLowerCase().includes(text))
+export function searchProducts(products, query = '', language = 'en') {
+  const normalize = value => {
+    const text = value.normalize('NFC').trim().toLocaleLowerCase(getLanguage(language))
+    return language === 'ar' ? text.replace(/[\u064B-\u065F\u0670\u0640]/g, '') : text
+  }
+  const text = normalize(query)
+  return products.filter(product => normalize(getProductText(product, language).name).includes(text))
 }
 
 export function filterByCategory(products, category = '') {
@@ -15,8 +21,8 @@ export function sortByPrice(products, order = 'featured') {
   return sorted
 }
 
-export function selectProducts(products, { query = '', category = '', sort = 'featured', affordableOnly = false } = {}) {
-  const filtered = filterByCategory(searchProducts(products, query), category)
+export function selectProducts(products, { query = '', category = '', sort = 'featured', affordableOnly = false, language = 'en' } = {}) {
+  const filtered = filterByCategory(searchProducts(products, query, language), category)
     .filter(product => !affordableOnly || product.price < 50)
   return sortByPrice(filtered, sort)
 }
@@ -33,8 +39,8 @@ export function calculateCartTotal(products, cart) {
   return products.reduce((total, product) => total + product.price * (cart[product.id] || 0), 0)
 }
 
-export function formatPrice(price) {
-  return new Intl.NumberFormat('en-US', {
+export function formatPrice(price, language = 'en') {
+  return new Intl.NumberFormat(languages[getLanguage(language)].locale, {
     style: 'currency', currency: 'USD', maximumFractionDigits: 0,
   }).format(price)
 }
