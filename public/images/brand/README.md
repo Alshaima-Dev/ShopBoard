@@ -10,7 +10,7 @@ Use case: ads-marketing. Asset: original high-end fashion boutique campaign phot
 
 ## Replacing the image
 
-Replace `yaninda-campaign.jpg` here or update the hero path in `src/ui.js`. Keep a wide composition with important objects near the center for the existing mobile crop. Update `heroAlt` in all three language dictionaries in `src/i18n.js`. Use only original or appropriately licensed replacement artwork and record its source here.
+Replace `yaninda-campaign.jpg` here or update the hero path in `src/shared/ui/storefront.ts`. Keep a wide composition with important objects near the center for the existing mobile crop. Update `heroAlt` in all three language dictionaries in `src/modules/i18n/i18n.ts`. Use only original or appropriately licensed replacement artwork and record its source here.
 
 ## Current refinement
 

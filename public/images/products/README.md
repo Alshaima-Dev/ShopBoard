@@ -27,4 +27,4 @@ The tote used the same studio specification with a three-quarter front angle and
 
 ## Replacing an image
 
-Replace the matching JPEG here using the same filename, or add a new local image and update its `image` path in `src/data.js`. Paths are relative to `public/`, for example `images/products/leather-tote-bag.jpg`. Update `imageAlt` to describe the replacement. Keep square framing and some empty space around the product. Use only your own images or images you have permission to reuse; record any new source and license here.
+Replace the matching JPEG here using the same filename, or add a new local image and update its `image` path in `src/modules/products/products.data.ts`. Paths are relative to `public/`, for example `images/products/leather-tote-bag.jpg`. Update `imageAlt` to describe the replacement. Keep square framing and some empty space around the product. Use only your own images or images you have permission to reuse; record any new source and license here.
