@@ -2,22 +2,19 @@
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
 
-const ui = fs.readFileSync(
-  new URL('../src/shared/ui/storefront.ts', import.meta.url),
-  'utf8',
-)
+const ui = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8')
 const favicon = fs.readFileSync(
   new URL('../public/yaninda.svg', import.meta.url),
   'utf8',
 )
 
 test('header and footer logos use editable text instead of embedded logo images', () => {
-  const logos = ui.match(/<a class="wordmark"[^>]*>[\s\S]*?<\/a>/g)
+  const logos = ui.match(/<a\s+class="wordmark"[^>]*>[\s\S]*?<\/a\s*>/g)
   assert.equal(logos.length, 2)
   for (const logo of logos) {
     assert.match(
       logo,
-      /<span class="brand-name" lang="en" dir="ltr">YANINDA<\/span>/,
+      /<span\b(?=[^>]*class="brand-name")(?=[^>]*lang="en")(?=[^>]*dir="ltr")[^>]*>\s*YANINDA\s*<\/span>/,
     )
     assert.match(logo, /data-brand-mark/)
     assert.doesNotMatch(logo, /<img\b|<image\b/)

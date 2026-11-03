@@ -12,7 +12,261 @@
     <title>YANINDA — Style by Your Side.</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div class="announcement wrap">
+        <span data-i18n="announcement">Style by Your Side.</span>
+        <span id="shipping-offer">Free shipping on orders $100+</span>
+      </div>
+      <header class="wrap header">
+        <a
+          class="wordmark"
+          href="#"
+          data-i18n-aria="home"
+          aria-label="YANINDA home"
+          ><span class="brand-mark" data-brand-mark aria-hidden="true"></span
+          ><span class="brand-name" lang="en" dir="ltr">YANINDA</span></a
+        >
+        <nav data-i18n-aria="navigation" aria-label="Main navigation">
+          <a href="#shop" id="shop-all" data-i18n="shopAll">Shop all</a
+          ><a href="#shop" id="affordable-products">Under $50</a
+          ><a href="#philosophy" data-i18n="philosophy">Our philosophy</a>
+        </nav>
+        <div class="header-actions" dir="ltr">
+          <div class="language-picker">
+            <label for="language" class="sr-only" data-i18n="language"
+              >Language</label
+            ><select id="language" dir="auto">
+              <option value="ar" lang="ar" dir="rtl">العربية</option>
+              <option value="en" lang="en">English</option>
+              <option value="tr" lang="tr">Türkçe</option>
+            </select>
+          </div>
+          <button id="open-cart" class="bag">
+            <span class="bag-icon" aria-hidden="true"></span
+            ><span class="bag-label" data-i18n="bag">Bag</span
+            ><span id="count">0</span>
+          </button>
+        </div>
+      </header>
+      <main>
+        <section class="hero wrap" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <span class="eyebrow" data-i18n="heroEyebrow"
+              >STYLE FOR EVERYONE</span
+            >
+            <h1 id="hero-title">
+              <span data-i18n="heroFirst">Your Style.</span><br /><em
+                data-i18n="heroSecond"
+                >Your Story.</em
+              >
+            </h1>
+            <p data-i18n="heroDescription">
+              Discover fashion, bags, shoes, and accessories for every style and
+              every moment.
+            </p>
+            <a href="#shop" class="primary"
+              ><span data-i18n="heroAction">Explore the Collection</span
+              ><span class="direction-icon" aria-hidden="true">↗</span></a
+            >
+            <div class="hero-foot">
+              <span class="brand-mark" data-brand-mark aria-hidden="true"></span
+              ><span data-i18n="heroFoot">Style by Your Side.</span>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img
+              src="%BASE_URL%images/brand/yaninda-campaign.jpg"
+              width="1200"
+              height="1200"
+              data-i18n-alt="heroAlt"
+              alt="Burgundy blazer and cream shirt on a brass rack with a burgundy handbag, beige knitwear, white sneakers, a watch, and sunglasses on warm cream podiums"
+              fetchpriority="high"
+            />
+          </div>
+        </section>
+        <div class="benefits wrap">
+          <div>
+            <span data-benefit-icon="sparkles" aria-hidden="true"></span
+            ><b data-i18n="benefitDesign">Everyday Elegance</b
+            ><small data-i18n="benefitDesignText">Style in every detail.</small>
+          </div>
+          <div>
+            <span data-benefit-icon="Bags" aria-hidden="true"></span
+            ><b data-i18n="benefitLast">Curated for You</b
+            ><small data-i18n="benefitLastText"
+              >Pieces you'll love to wear.</small
+            >
+          </div>
+          <div>
+            <span data-benefit-icon="heart" aria-hidden="true"></span
+            ><b data-i18n="benefitPersonal">Your Style, Your Way</b
+            ><small data-i18n="benefitPersonalText"
+              >Express what makes you unique.</small
+            >
+          </div>
+          <div>
+            <span data-benefit-icon="bow" aria-hidden="true"></span
+            ><b data-i18n="benefitCare">A Little Extra</b
+            ><small data-i18n="benefitCareText"
+              >Beautiful finds, special moments.</small
+            >
+          </div>
+        </div>
+        <section class="shop wrap" id="shop" aria-labelledby="shop-title">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow" data-i18n="shopEyebrow"
+                >CURATED FOR YOU</span
+              >
+              <h2 id="shop-title" data-i18n="shopTitle">
+                The pieces that feel like you.
+              </h2>
+            </div>
+            <p data-i18n="shopDescription">
+              Bags, shoes, and accessories, thoughtfully brought together.
+            </p>
+          </div>
+          <div class="toolbar">
+            <div class="controls">
+              <label class="search" for="product-search"
+                ><span class="sr-only" data-i18n="search">Search products</span
+                ><span class="search-icon" aria-hidden="true"></span
+                ><input
+                  id="product-search"
+                  type="search"
+                  data-i18n-placeholder="searchPlaceholder"
+                  placeholder="Find something good"
+                  data-i18n-aria="search"
+                  aria-label="Search products"
+              /></label>
+              <div class="control-field">
+                <label for="category" data-i18n="category">Category</label
+                ><select id="category">
+                  <option value="" data-i18n="allCategories">
+                    All categories
+                  </option>
+                </select>
+              </div>
+              <div class="control-field">
+                <label for="sort" data-i18n="price">Price</label
+                ><select
+                  id="sort"
+                  data-i18n-aria="sort"
+                  aria-label="Sort products"
+                >
+                  <option value="featured" data-i18n="featured">
+                    Default order
+                  </option>
+                  <option value="low" data-i18n="low">
+                    Price: low to high
+                  </option>
+                  <option value="high" data-i18n="high">
+                    Price: high to low
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <p id="results" aria-live="polite"></p>
+          <div id="products" class="product-grid"></div>
+        </section>
+        <section class="signup wrap" id="signup" aria-labelledby="signup-title">
+          <h2 id="signup-title" data-i18n="signupTitle">Sign up</h2>
+          <p id="signup-note" class="signup-note" data-i18n="signupNote">
+            Demo form only. No account is created, and your details are not sent
+            or saved.
+          </p>
+          <form
+            id="signup-form"
+            method="post"
+            aria-labelledby="signup-title"
+            aria-describedby="signup-note"
+          >
+            <div class="signup-field">
+              <label for="signup-email" data-i18n="signupEmail"
+                >Email address</label
+              >
+              <input
+                id="signup-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                dir="ltr"
+                required
+              />
+            </div>
+            <div class="signup-field">
+              <label for="signup-password" data-i18n="signupPassword"
+                >Password</label
+              >
+              <input
+                id="signup-password"
+                name="password"
+                type="password"
+                autocomplete="new-password"
+                minlength="8"
+                aria-describedby="signup-password-hint"
+                required
+              />
+              <small id="signup-password-hint" data-i18n="signupPasswordHint"
+                >Use at least 8 characters.</small
+              >
+            </div>
+            <button class="primary" type="submit" disabled>
+              <span data-i18n="signupSubmit">Try sign-up</span>
+            </button>
+          </form>
+        </section>
+        <section
+          class="philosophy wrap"
+          id="philosophy"
+          aria-labelledby="philosophy-title"
+        >
+          <span class="sun brand-mark" data-brand-mark aria-hidden="true"></span
+          ><span class="eyebrow" data-i18n="philosophyEyebrow"
+            >STYLE FOR EVERYONE</span
+          >
+          <h2 id="philosophy-title" data-i18n="philosophyTitle">
+            Your Style. Your Story.
+          </h2>
+          <p data-i18n="philosophyText">
+            Discover fashion, bags, shoes, and accessories for every style and
+            every moment.
+          </p>
+          <a class="primary" href="#shop"
+            ><span data-i18n="discover">Explore the Collection</span>
+            <span class="direction-icon" aria-hidden="true">↗</span></a
+          >
+        </section>
+      </main>
+      <footer class="wrap">
+        <a
+          class="wordmark"
+          href="#"
+          data-i18n-aria="home"
+          aria-label="YANINDA home"
+          ><span class="brand-mark" data-brand-mark aria-hidden="true"></span
+          ><span class="brand-name" lang="en" dir="ltr">YANINDA</span></a
+        >
+        <p data-i18n="footerTagline">Style by Your Side.</p>
+        <small id="footer-copy"
+          >© 2026 YANINDA. Designed &amp; developed by ALSHAIMA.</small
+        >
+      </footer>
+      <dialog id="cart" aria-labelledby="cart-title">
+        <div class="cart-heading">
+          <h2 id="cart-title" data-i18n="cartTitle">Your bag</h2>
+          <button
+            id="close-cart"
+            data-i18n-aria="closeBag"
+            aria-label="Close bag"
+          ></button>
+        </div>
+        <div id="cart-items"></div>
+        <div id="cart-bottom"></div>
+      </dialog>
+      <div class="toast" role="status" aria-live="polite"></div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

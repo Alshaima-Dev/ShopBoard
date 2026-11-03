@@ -22,6 +22,25 @@ const { createCartStore } = await import('../src/modules/cart/cart.state.ts')
 const { createLanguageStore } =
   await import('../src/modules/i18n/i18n.state.ts')
 
+test('affordable products stay strictly below 50 without changing catalog prices', () => {
+  const prices = [49.99, 50, 50.01]
+  const catalog = products.slice(0, 3).map((product, index) => ({
+    ...product,
+    price: prices[index],
+  }))
+  assert.deepEqual(
+    selectProducts(catalog, { affordableOnly: true }).map(
+      (product) => product.id,
+    ),
+    [catalog[0].id],
+  )
+  assert.equal(selectProducts(catalog).length, 3)
+  assert.deepEqual(
+    catalog.map((product) => product.price),
+    prices,
+  )
+})
+
 const memoryStorage = () => {
   const items = new Map()
   return {

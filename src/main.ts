@@ -4,11 +4,13 @@ import { initToast } from './shared/ui/toast.ts'
 import { initProductsUI } from './modules/products/products.ui.ts'
 import { initCartUI } from './modules/cart/cart.ui.ts'
 import { applyLanguage, initLanguageSwitcher } from './modules/i18n/i18n.ui.ts'
+import { initSignupUI } from './modules/signup/signup.ui.ts'
 
 const storefront = mountStorefront()
 const toast = initToast()
 const cart = initCartUI(toast.notify)
 const products = initProductsUI(cart.addItem)
+initSignupUI(toast.notify)
 
 function refreshLanguage() {
   applyLanguage()

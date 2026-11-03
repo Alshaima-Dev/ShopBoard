@@ -2146,3 +2146,62 @@ footer > small {
     padding: 40px 48px;
   }
 }
+
+/* Demo sign-up uses the existing boutique palette and container. */
+.signup {
+  margin-block: 48px;
+  padding: 28px 24px;
+  border: 1px solid var(--brand-border);
+  border-radius: 16px;
+  background: var(--brand-soft);
+}
+.signup h2 {
+  margin: 0 0 12px;
+  color: var(--brand-primary);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+}
+.signup-note {
+  max-width: 60ch;
+  margin: 0 auto 24px;
+  font-size: 13px;
+  line-height: 1.8;
+  text-align: center;
+}
+.signup form {
+  display: grid;
+  gap: 18px;
+  max-width: 480px;
+  margin-inline: auto;
+}
+.signup-field {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+.signup label,
+.signup small {
+  font-size: 13px;
+  line-height: 1.7;
+}
+.signup input {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--brand-border);
+  border-radius: 8px;
+  background: var(--brand-background);
+  color: var(--brand-text);
+  font-size: 16px;
+  line-height: 1.5;
+}
+.signup .primary {
+  justify-content: center;
+  min-height: 44px;
+}
+[dir='rtl'] .signup h2 {
+  font-family: 'Noto Sans Arabic', Tahoma, sans-serif;
+  font-size: 26px;
+}

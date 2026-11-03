@@ -3,6 +3,8 @@ import type { Cart, CartStorage } from './cart.types.ts'
 
 import { products } from '../products/products.data.ts'
 
+export const MAX_CART_QUANTITY = 99
+
 // Preserve the existing key so saved shopping bags survive this refactor.
 const STORAGE_KEY = 'shopboard-catalog-cart-v2'
 
@@ -33,7 +35,7 @@ export function createCartStore(
         Number.isInteger(quantity) &&
         quantity > 0
       ) {
-        cart[id] = Math.min(99, quantity)
+        cart[id] = Math.min(MAX_CART_QUANTITY, quantity)
       }
     }
   } catch {
@@ -51,7 +53,7 @@ export function createCartStore(
   function changeQuantity(id: string | number | undefined, step: number) {
     id = String(id)
     if (!validIds.has(id) || !Number.isInteger(step)) return
-    const quantity = Math.min(99, (cart[id] || 0) + step)
+    const quantity = Math.min(MAX_CART_QUANTITY, (cart[id] || 0) + step)
     if (quantity > 0) cart[id] = quantity
     else delete cart[id]
     save()

@@ -2,6 +2,8 @@ import type { Product, Category } from './products.types.ts'
 
 import { getProductText, getLanguage } from '../i18n/i18n.ts'
 
+export const AFFORDABLE_PRICE_LIMIT = 50
+
 // Pure functions: inputs in, results out. No DOM, storage, or input mutation.
 export function searchProducts(
   products: readonly Product[],
@@ -55,7 +57,9 @@ export function selectProducts(
   const filtered = filterByCategory(
     searchProducts(products, query, language),
     category,
-  ).filter((product) => !affordableOnly || product.price < 50)
+  ).filter(
+    (product) => !affordableOnly || product.price < AFFORDABLE_PRICE_LIMIT,
+  )
   return sortByPrice(filtered, sort)
 }
 

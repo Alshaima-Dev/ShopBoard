@@ -65,13 +65,12 @@ test('hero, promotion, announcement and footer use the exact approved copy', () 
 })
 
 test('visible sections bind the approved keys and keep the dynamic copyright year', () => {
-  const ui = readFileSync(
-    new URL('../src/shared/ui/storefront.ts', import.meta.url),
-    'utf8',
-  )
+  const ui = readFileSync(new URL('../index.html', import.meta.url), 'utf8')
   for (const [section, keys] of [
     [
-      ui.match(/<section class="hero wrap"[\s\S]*?<\/section>/)?.[0],
+      ui.match(
+        /<section\b(?=[^>]*class="hero wrap")[^>]*>[\s\S]*?<\/section>/,
+      )?.[0],
       [
         'heroEyebrow',
         'heroFirst',
@@ -81,11 +80,18 @@ test('visible sections bind the approved keys and keep the dynamic copyright yea
       ],
     ],
     [
-      ui.match(/<section class="philosophy wrap"[\s\S]*?<\/section>/)?.[0],
+      ui.match(
+        /<section\b(?=[^>]*class="philosophy wrap")[^>]*>[\s\S]*?<\/section>/,
+      )?.[0],
       ['philosophyEyebrow', 'philosophyTitle', 'philosophyText', 'discover'],
     ],
     [ui.match(/<footer[\s\S]*?<\/footer>/)?.[0], ['footerTagline']],
-    [ui.match(/<div class="announcement wrap"[^\n]*/)?.[0], ['announcement']],
+    [
+      ui.match(
+        /<div\b(?=[^>]*class="announcement wrap")[^>]*>[\s\S]*?<\/div>/,
+      )?.[0],
+      ['announcement'],
+    ],
   ]) {
     assert.ok(section, 'Expected visible section is missing')
     for (const key of keys)

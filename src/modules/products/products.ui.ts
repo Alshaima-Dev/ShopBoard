@@ -1,6 +1,10 @@
 import type { Product } from './products.types.ts'
 import { products } from './products.data.ts'
-import { selectProducts, getCategories } from './products.logic.ts'
+import {
+  selectProducts,
+  getCategories,
+  AFFORDABLE_PRICE_LIMIT,
+} from './products.logic.ts'
 import {
   createElement,
   replaceChildren,
@@ -116,7 +120,9 @@ export function initProductsUI(onAdd: (id: string | undefined) => void) {
     })
     requiredElement('#results', HTMLElement).textContent =
       t('results', { count: number(shown.length) }) +
-      (affordableOnly ? ' · ' + t('underPrice', { price: money(50) }) : '')
+      (affordableOnly
+        ? ' · ' + t('underPrice', { price: money(AFFORDABLE_PRICE_LIMIT) })
+        : '')
     replaceChildren(
       requiredElement('#products', HTMLElement),
       shown.length

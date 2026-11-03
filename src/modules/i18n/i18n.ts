@@ -13,6 +13,15 @@ export const languages = {
 export const messages = {
   en: {
     title: 'YANINDA — Style by Your Side.',
+    signupTitle: 'Sign up',
+    signupNote:
+      'Demo form only. No account is created, and your details are not sent or saved.',
+    signupEmail: 'Email address',
+    signupPassword: 'Password',
+    signupPasswordHint: 'Use at least 8 characters.',
+    signupSubmit: 'Try sign-up',
+    signupSuccess:
+      'Demo complete. No account was created, and your details were not sent or saved.',
     meta: 'YANINDA: fashion and lifestyle for men and women. Discover bags, shoes, accessories, and everyday style.',
     announcement: 'Style by Your Side.',
     shippingOffer: 'Free shipping on orders {price}+',
@@ -96,6 +105,15 @@ export const messages = {
   },
   ar: {
     title: 'YANINDA — أناقتك دائمًا بجانبك.',
+    signupTitle: 'إنشاء حساب',
+    signupNote:
+      'نموذج تجريبي فقط. لن يتم إنشاء حساب أو إرسال بياناتك أو حفظها.',
+    signupEmail: 'البريد الإلكتروني',
+    signupPassword: 'كلمة المرور',
+    signupPasswordHint: 'استخدم 8 أحرف على الأقل.',
+    signupSubmit: 'تجربة التسجيل',
+    signupSuccess:
+      'اكتملت التجربة. لم يتم إنشاء حساب أو إرسال بياناتك أو حفظها.',
     meta: 'YANINDA للأزياء ونمط الحياة للرجال والنساء. اكتشف الحقائب والأحذية والإكسسوارات واختيارات الأناقة اليومية.',
     announcement: 'أناقتك دائمًا بجانبك.',
     shippingOffer: 'شحن مجاني للطلبات بقيمة {price} أو أكثر',
@@ -178,6 +196,15 @@ export const messages = {
   },
   tr: {
     title: 'YANINDA — Tarzın her an yanında.',
+    signupTitle: 'Kayıt ol',
+    signupNote:
+      'Yalnızca deneme formudur. Hesap oluşturulmaz; bilgileriniz gönderilmez veya kaydedilmez.',
+    signupEmail: 'E-posta adresi',
+    signupPassword: 'Şifre',
+    signupPasswordHint: 'En az 8 karakter kullanın.',
+    signupSubmit: 'Kayıt formunu dene',
+    signupSuccess:
+      'Deneme tamamlandı. Hesap oluşturulmadı; bilgileriniz gönderilmedi veya kaydedilmedi.',
     meta: 'YANINDA: kadınlar ve erkekler için moda ve yaşam stili. Çantaları, ayakkabıları, aksesuarları ve günlük stili keşfet.',
     announcement: 'Tarzın her an yanında.',
     shippingOffer: '{price} ve üzeri siparişlerde ücretsiz kargo',

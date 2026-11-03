@@ -2,6 +2,7 @@ import { requiredElement } from '../../shared/ui/dom.ts'
 import { t, money } from '../../shared/ui/formatting.ts'
 import { languages } from './i18n.ts'
 import { languageStore } from './i18n.state.ts'
+import { AFFORDABLE_PRICE_LIMIT } from '../products/products.logic.ts'
 
 export function applyLanguage() {
   const language = languageStore.getLanguage()
@@ -32,7 +33,7 @@ export function applyLanguage() {
   )
   requiredElement('#affordable-products', HTMLElement).textContent = t(
     'underPrice',
-    { price: money(50) },
+    { price: money(AFFORDABLE_PRICE_LIMIT) },
   )
   requiredElement('#footer-copy', HTMLElement).textContent = t('footer', {
     year: new Date().getFullYear(),
